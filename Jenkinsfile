@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo '=== Pulling latest code from GitHub ==='
                 git branch: 'main',
-                    url: 'https://github.com/roweenaveigas/ngd-movie-recommender.git'
+                    url: 'https://github.com/roweenaveigas/movierecommender.git'
             }
         }
 

@@ -1,0 +1,23 @@
+# Gradle / Jenkins cache
+.gradle/
+.jenkins/
+build/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+venv/
+env/
+
+# Streamlit
+.streamlit/
+streamlit.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (optional - remove if you want to push these)
+*.dat
