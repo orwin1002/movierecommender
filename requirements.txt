@@ -1,0 +1,6 @@
+streamlit
+pymongo
+neo4j
+pandas
+pytest
+dnspython
