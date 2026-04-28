@@ -1,13 +1,14 @@
-import os
-from pymongo import MongoClient
 import streamlit as st
+from recommender import get_recommendations, ensure_user, mark_watched, get_watched_ids
+from pymongo import MongoClient
+import os
 
 MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://admin:12345@movierecommender.gu56d6o.mongodb.net/?appName=movierecommender")
 mongo_client = MongoClient(MONGO_URI)
 db = mongo_client["movierecommender"]
 
 st.set_page_config(page_title="MoodReel", page_icon="🎬", layout="wide")
-st.title("🎬 MoodReel — Mood-Based Movie Recommender")
+st.title("🎬 MoodReel v2 — Mood-Based Movie Recommender")
 
 # --- Sidebar ---
 with st.sidebar:
