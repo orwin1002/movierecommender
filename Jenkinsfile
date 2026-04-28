@@ -33,11 +33,9 @@ pipeline {
             steps {
                 echo '=== Deploying Streamlit app ==='
                 bat 'taskkill /F /IM python.exe /T 2>nul || echo No existing instance'
-                bat '''
-                start "" /B cmd /c "python -m streamlit run app.py --server.port 8501 --server.headless true > streamlit.log 2>&1"
-                '''
+                bat 'powershell -Command "Start-Process python -ArgumentList \'-m streamlit run app.py --server.port 8501 --server.headless true\' -WindowStyle Hidden"'
                 bat 'timeout /t 6 /nobreak > nul'
-                echo 'Deploy done'
+                echo '=== Deploy done ==='
             }
         }
     }
