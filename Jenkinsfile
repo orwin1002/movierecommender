@@ -32,8 +32,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo '=== Deploying Streamlit app ==='
-                bat 'taskkill /F /IM streamlit.exe /T 2>nul || echo No existing instance'
-                bat 'start /B python -m streamlit run app.py --server.port 8501 --server.headless true'
+                bat 'taskkill /F /IM python.exe /T 2>nul || echo No existing instance'
+                bat '''
+                start "" /B cmd /c "python -m streamlit run app.py --server.port 8501 --server.headless true > streamlit.log 2>&1"
+                '''
+                bat 'timeout /t 6 /nobreak > nul'
+                echo 'Deploy done'
             }
         }
     }
