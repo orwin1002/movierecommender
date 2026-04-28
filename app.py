@@ -1,5 +1,6 @@
 import os
 from pymongo import MongoClient
+import streamlit as st
 
 MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://admin:12345@movierecommender.gu56d6o.mongodb.net/?appName=movierecommender")
 mongo_client = MongoClient(MONGO_URI)
