@@ -29,13 +29,20 @@ pipeline {
             }
         }
 
+        
         stage('Deploy') {
             steps {
                 echo '=== Deploying Streamlit app ==='
-                bat 'taskkill /F /IM python.exe /T 2>nul || echo No existing instance'
-                bat 'powershell -Command "Start-Process python -ArgumentList \'-m streamlit run app.py --server.port 8501 --server.headless true\' -WindowStyle Hidden"'
-                bat 'timeout /t 6 /nobreak > nul'
+                bat 'deploy.bat'
                 echo '=== Deploy done ==='
+            }
+        }
+        
+        stage('Health Check') {
+            steps {
+                echo '=== Checking app is live ==='
+                bat 'timeout /t 5 /nobreak > nul'
+                bat 'curl -f http://localhost:8501/_stcore/health && echo App is live! || echo Health check failed'
             }
         }
     }
