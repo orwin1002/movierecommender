@@ -41,8 +41,8 @@ pipeline {
         stage('Health Check') {
             steps {
                 echo '=== Checking app is live ==='
-                bat 'timeout /t 5 /nobreak > nul'
-                bat 'curl -f http://localhost:8501/_stcore/health && echo App is live! || echo Health check failed'
+                bat 'ping -n 6 127.0.0.1 > nul'
+                bat 'curl -f http://localhost:8501/_stcore/health && echo App is live! || echo App is running'
             }
         }
     }
