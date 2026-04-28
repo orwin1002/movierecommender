@@ -17,8 +17,13 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo '=== Pulling latest code from GitHub ==='
-                git branch: 'main',
-                    url: 'https://github.com/roweenaveigas/movierecommender.git'
+                checkout scmGit(
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        credentialsId: 'github-creds',
+                        url: 'https://github.com/orwin1002/movierecommender.git'
+                    ]]
+                )
             }
         }
 
