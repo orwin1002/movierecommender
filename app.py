@@ -8,7 +8,7 @@ mongo_client = MongoClient(MONGO_URI)
 db = mongo_client["movierecommender"]
 
 st.set_page_config(page_title="MoodReel", page_icon="🎬", layout="wide")
-st.title("🎬 MoodReel — Mood Based Movie Recommender App")
+st.title("🎬 MoodReel v2 — Mood Based Movie Recommender App")
 
 # --- Sidebar ---
 with st.sidebar:
